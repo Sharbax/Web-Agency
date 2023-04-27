@@ -1,0 +1,474 @@
+/* Start Global Rules */
+
+/* Adding this color as a root to start because most elements are in this color */
+:root {
+    --main-color:rgba(18, 181, 226, 0.667);
+    --secondary-color:#2c4755;
+    --section-padding:60px;
+    --section-background:#f6f6f6;
+}
+* { 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Adding media to the container making the page fit to all screens */
+/* Small */ 
+@media ( min-width: 768px) {
+    .container { 
+        width: 750px;
+    }
+}
+
+/* Medium */
+@media ( min-width: 992px) {
+    .container {
+        width:970px;
+    }
+}
+
+/* Large */
+@media ( min-width: 1200px) {
+    .container { 
+        width:1170px;
+    }
+}
+
+/* End Global Rules */
+
+/* Start Components */  /* The components we are using many times */
+.special-heading {
+    color:#ebeced;
+    font-size: 100px;
+    text-align: center;
+    font-weight:800;
+    letter-spacing: -3px;
+    margin:0;
+}
+.special-heading + p {      /* to select only the paragraph after this special-heading */
+    margin: -30px 0 0;
+    font-size: 20px;
+    text-align: center;
+    color:#797979;
+}
+
+@media (max-width: 767px) {
+    .special-heading {
+    font-size: 60px;
+    }
+}
+
+/* End Components */
+
+/* Start Header */
+
+.header {
+    padding:20px;
+}
+
+.header .logo {
+    width: 40px;
+}
+
+/* To make the header of the logo and the links in the same line */
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.header .links { 
+    position:relative;
+}
+/* Drawing the bars icon for the links */
+/* Making the second bar of the links larger when we hover */
+.header .links:hover .icon span:nth-child(2) {      
+    width: 100%;
+}
+
+.header .links .icon {
+    width:30px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-end;
+}
+.header .links .icon span {
+    background-color: #333;
+    margin-bottom: 5px;
+    height: 2px;
+}
+.header .links .icon span:first-child {
+    width:100%;
+}
+.header .links .icon span:nth-child(2) {
+    width:60%;
+    transition: 0.3s;
+}
+.header .links .icon span:last-child {
+    width:100%;
+}
+/* Editing the links box */
+.header .links ul {
+    list-style: none;
+    margin:0;
+    padding:0;
+    background-color:var(--section-background);
+    position: absolute;
+    right:0;
+    min-width: 200px;
+    top:35px;
+    display: none;
+    z-index:1;
+}
+/* Making a small arrow between the link box and the bars */
+.header .links ul::before {
+    content:" ";
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent var(--section-background) transparent;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}
+/* Showing the block of links when we hover on the bars */
+.header .links:hover ul {
+    display: block;
+}
+/* Editing the links inside the links box */ 
+.header .links ul li a { 
+    display:block;
+    padding: 15px;
+    text-decoration: none;
+    color:#333;
+    transition: 0.3s;
+}
+/* When we hover on the links inside the box it will move */
+.header .links ul li a:hover {
+    padding-left: 25px;
+}
+/* Drawing a line between the links */
+.header .links ul li:not(:last-child) a { 
+    border-bottom: 1px solid #ddd;
+}
+/* End Header */
+
+/* Start Landing */
+.landing {
+    background-image: url(https://cdn.pixabay.com/photo/2018/02/23/04/38/computer-3174729_1280.jpg);
+    background-size: cover;
+    height:calc(100vh - 55px);
+    position: relative;
+}
+.landing .intro-text {
+    position: absolute;
+    left: 70%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    text-align:center;
+    width: 320px;
+    max-width: 100%;
+}
+.landing .intro-text h1 {
+    margin: 0;
+    font-weight:bold;
+    font-size: 100px;
+    color: var(--main-color);
+}
+.landing .intro-text p {
+    font-size: 19px;
+    line-height: 1.8;
+    margin: 0 0 0 60px;
+    
+}
+/* End Landing */
+
+/* Start Features */
+.features {
+    padding-top:var(--section-padding);
+    padding-bottom:var(--section-padding);
+    background-color:var(--section-background);
+}
+
+/* Using Grid to draw the container of the 3 features with 300px minimum to start and 1 fraction if there is any extra space that will be destributed to the 3 */
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));   
+    grid-gap:20px;
+}
+
+.features .feat {
+    padding: 20px;
+    text-align:center;
+}
+.features .feat i {
+    color:var(--main-color );
+    font-size: 40px;
+}
+.features .feat h3 {
+    font-weight: 800px;
+    margin: 30px 0;
+}
+.features .feat p {
+    line-height: 1.8;
+    color: #777;
+    font-size: 17px;
+}
+/* End Features */
+
+/* Start Services */
+.services {
+    padding-top:var(--section-padding);
+    padding-bottom:var(--section-padding);
+}
+
+.services .services-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top:100px;
+}
+
+.services .services-content .srv {
+    display:flex;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+    .services .services-content .srv {
+    flex-direction: column;
+    text-align: center;
+    }
+}
+
+.services .services-content .srv i {
+    color:var(--main-color);
+    flex-basis: 60px;
+    font-size: x-large;
+}
+
+.services .services-content .srv .text {
+    flex: 1;
+}
+.services .services-content .srv h3 {
+    margin: 0 0 20px;
+}
+.services .services-content .srv p {
+    color:#777;
+    font-weight:300px;
+    line-height:1.6;
+}
+
+.services .services-content .image {
+    text-align: center;
+    position: relative;
+}
+.services .services-content .image::before {
+    content: '';
+    background-color:var(--secondary-color);
+    width:120px;
+    height:calc(100% + 100px);
+    top:-50px;
+    position:absolute;
+    right:0;
+    z-index: -1;
+}
+.services .services-content .image img {
+    height:400px;
+    width:300px;
+}
+
+@media (max-width: 1199px) {
+    .image-column {
+    display: none;
+    }
+}
+
+/* End Services */
+
+/* Start Portfolio */
+.portfolio {
+    padding-top:var(--section-padding);
+    padding-bottom:var(--section-padding);
+    background-color:var(--section-background);
+    padding-bottom:0;
+}
+
+.portfolio .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top:100px;
+}
+
+.portfolio .portfolio-content .card {
+    background-color: white;
+    margin: 0 0 20px 0;
+}
+.portfolio .portfolio-content .card img {
+    max-width: 100%;
+    height:300px
+}
+.portfolio .portfolio-content .card .info {
+    padding:20px;
+}
+.portfolio .portfolio-content .card .info h3 {
+    margin:0;
+}
+
+.portfolio .portfolio-content .card .info p {
+    margin: 0 0 0 150px;
+    color:#797979;
+}
+.portfolio .portfolio-content .card .info .p1 {
+    padding: 0 0 0 20px;
+}
+.portfolio .portfolio-content .card .info .p3 {
+    padding: 0 0 0 20px;
+}
+
+/* End Portfolio */
+
+/* Start About */
+.about {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: white;
+}
+
+.about .about-content {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+@media (max-width: 991px) {
+    .about .about-content {
+    flex-direction: column;
+    text-align: center;
+    }
+}
+
+.about .about-content .image {
+    position:relative;
+    width:250px;
+    z-index:0;
+}
+
+@media (max-width: 991px) {
+    .about .about-content .image {
+    margin: 0 auto 60px;
+    }
+}
+
+.about .about-content .image::before {
+    content:"";
+    position: absolute;
+    background-color:#2c4755;
+    width:100px;
+    height:calc(100% + 80px);
+    top: -40px;
+    left: -20px;
+    z-index: -1 ;
+}
+
+@media (max-width: 991px) {
+    .about .about-content .image::before{
+    display: none;
+    }
+}
+
+.about .about-content .image img {
+    max-width: 100%;
+    height:300px;
+}
+
+.about .about-content p:first-of-type {
+    padding-bottom:20px;
+    font-size: larger;
+    font-style: oblique;
+}
+.about .about-content p:last-of-type {
+    padding-top: 20px;
+    color:#333;
+    line-height: 2;
+}
+.about .about-content .text hr {
+    width:50%;
+    display:inline-block;
+    border-color: #2c4755;
+}
+/* End About */
+
+/* Start Contact */
+
+.contact {
+    padding-top:var(--section-padding);
+    padding-bottom:var(--section-padding);
+}
+.contact .info {
+        padding-top:var(--section-padding);
+        padding-bottom:var(--section-padding);
+        text-align: center;
+}
+.contact .info .label {
+    font-size: 30px;
+    font-weight: 800;
+    color:var(--secondary-color);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.contact .info .link {
+    display:block;
+    font-size: 30px;
+    font-weight: 800;
+    color:var(--main-color);
+    text-decoration: none;
+}
+.contact .info .social {
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-family: 16px;
+}
+.contact .info .social i {
+    margin-left: 10px;
+    color:#2c4755;
+}
+
+@media (max-width: 767px) {
+    .contact .info .label,
+    .contact .info .link {
+    font-size: 25px;
+    }
+}
+
+/* End Contact */ 
+
+/* Start Footer */
+.footer {
+    background-color: #2c4755;
+    color:white;
+    padding: 30px 20px;
+    text-align: center;
+}   
+.footer span {
+    color:var(--main-color);
+    font-weight: bold;
+}
+/* End Footer */
